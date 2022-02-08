@@ -1,0 +1,58 @@
+div.contact {
+    background: #F9F9F9;
+    padding: 30px;
+    font-weight: 700;
+}
+
+div.contact a {
+    color: #161616;
+    text-decoration: none;
+}
+
+div.contact div.send-me {
+    margin-top: 30px;
+}
+
+div.contact div.send-me input {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid #1616164b;
+    margin-top: 10px;
+}
+
+div.contact #email-field {
+    padding-left: 10px;
+}
+
+div.contact #email-field::placeholder {
+    font-weight: 700;
+}
+
+div.contact #button-submit {
+    background: #5CA720;
+    font-weight: 700;
+    border: none;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    div.contact {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    div.send-me {
+        width: 50%;
+    }
+
+    div.align-button {
+        display: flex;
+    }
+
+    div.contact #button-submit {
+        margin-left: 10px;
+        width: 200px;
+    }
+}

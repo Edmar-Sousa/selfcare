@@ -1,0 +1,112 @@
+div.page-container {
+    width: 100vw;
+    padding: 10px;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+}
+
+main.user-area {
+    width: 100%;
+    padding: 20px 10px;
+}
+
+main.user-area div.user-area-header {
+    display: flex;
+    align-items: center;
+}
+
+main.user-area img.user-image {
+    width: 200px;
+    border-radius: 50%;
+}
+
+div.user-details-header {
+    padding: 0 20px;
+}
+
+div.user-details-header h3 {
+    margin-bottom: 20px;
+}
+
+div.user-place-details {
+    margin-top: 20px;
+}
+
+table {
+    margin-top: 20px;
+}
+
+.bold-green {
+    color: #5CA720;
+}
+
+th.bold-green {
+    text-align: left;
+}
+
+table td {
+    padding: 0 10px;
+}
+
+
+div.decription-area {
+    margin-top: 30px;
+}
+
+div.decription-area p {
+    margin-top: 20px;
+    padding: 0 10px;
+    text-align: justify;
+}
+
+section.comment-area {
+    padding: 20px 0;
+}
+
+section.comment-area div.comment-area__header {
+    padding-right: 10px;
+}
+
+div.comment {
+    position: relative;
+}
+
+div.comment a.edit-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    padding: 4px;
+    border-radius: 3px;
+    color: #161616;
+}
+
+div.comment a.edit-button:hover {
+    color: #5CA720;
+}
+
+div.comment h4 {
+    margin-top: 10px;
+}
+
+div.comment span.green {
+    color: #5CA720;
+}
+
+div.comment a.button-details {
+    padding: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 3px;
+    color: #fff;
+    background: #5CA720;
+}
+
+div.comment div.button-details-container {
+    margin-top: 10px;
+}
+
+@media (max-width: 404px) {
+    main.user-area img.user-image {
+        width: 100px;
+    }
+}

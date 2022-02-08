@@ -1,0 +1,67 @@
+div.page-container {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Lato, Arial, Helvetica, sans-serif;
+}
+
+fieldset {
+    border: none;
+}
+
+div.page-container h1.logo-name {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+div.page-container form {
+    max-width: 600px;
+    width: 90%;
+    padding: 30px 20px;
+    border-radius: 3px;
+
+    background: #F9F9F9;
+    border: 1px solid #1616164b;
+}
+
+div.page-container form input {
+    width: 100%;
+    height: 30px;
+
+    padding-left: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #1616164b;
+    border-radius: 3px;
+
+
+    outline: none;
+    font-size: 11pt;
+}
+
+div.page-container a.register-link {
+    text-decoration: none;
+    font-weight: 700;
+    color: #161616;
+}
+
+div.page-container button.button-login {
+    width: 200px;
+    height: 30px;
+    font-weight: 700;
+    margin-top: 20px;
+    border: none;
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    background: #5CA720;
+    color: #fff;
+}
+
+div.page-container button.button-login:hover {
+    transform: scale(0.98);
+}

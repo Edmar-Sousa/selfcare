@@ -1,0 +1,77 @@
+{% extends "selfcare/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock styles %}
+
+
+{% block body %}
+    <section class="banner"></section>
+
+    <main class="products">
+        <div class="products-header">
+            <h2>PROMOÇÃO</h2>
+            <p>6 Produtos</p>
+        </div>
+
+        <div class="products-list">
+            <div class="product-item">
+                <img src="{% static 'assets/img1.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+
+            <div class="product-item">
+                <img src="{% static 'assets/img2.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+
+            <div class="product-item">
+                <img src="{% static 'assets/img3.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+
+            <div class="product-item">
+                <img src="{% static 'assets/img4.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+
+            <div class="product-item">
+                <img src="{% static 'assets/img5.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+
+            <div class="product-item">
+                <img src="{% static 'assets/img6.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+
+            <div class="product-item">
+                <img src="{% static 'assets/img7.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+
+            <div class="product-item">
+                <img src="{% static 'assets/img8.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+
+            <div class="product-item">
+                <img src="{% static 'assets/img9.jpg' %}" alt="img produto 1" class="img-product">
+                <p class="product-name">Lorem ipsum dolor sit</p>
+                <h3>R$ <span class="text-green">50,00</span></h3>
+            </div>
+        </div>
+    </main>
+{% endblock body %}
