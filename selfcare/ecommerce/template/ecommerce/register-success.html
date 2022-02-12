@@ -1,41 +1,33 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Seccess</title>
+{% extends "selfcare/base.html" %}
+{% load static %}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+{% block title %}Seccess{% endblock title %}
 
-    <link rel="stylesheet" href="css/register-success.css">
-</head>
-<body>
-    
-    <div class="page-container">
-        <main class="register-success">
-            <div class="header-success">
-                <span class="logo-check">
-                    <i class="far fa-check-circle"></i>
-                </span>
-                <p class="msg-success">Sucesso</p>
-            </div>
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/register-success.css' %}">
+{% endblock styles %}
 
-            <div class="register-success__boby">
-                <h2><i class="fas fa-star"></i> selfcare</h2>
-                <p>Bem vindo! Seu registro foi feito com sucesso!</p>
-                <a href="#">Login</a>
-            </div>
-        </main>
+{% block body %}
+<main class="register-success">
+    <div class="header-success">
+        <span class="logo-check">
+            <i class="far fa-check-circle"></i>
+        </span>
+        <p class="msg-success">Sucesso</p>
     </div>
 
-    <script>
+    <div class="register-success__boby">
+        <h2><i class="fas fa-star"></i> selfcare</h2>
+        <p>Bem vindo! Olá <b>{{ username }}</b>, seu registro foi feito com sucesso!</p>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+</main>
 
-        window.onload = function () {
-            document.querySelector('main.register-success').style.display = 'block'
-        }
+<script>
 
-    </script>
+    window.onload = function () {
+        document.querySelector('main.register-success').style.display = 'block'
+    }
 
-</body>
-</html>
+</script>
+{% endblock body %}

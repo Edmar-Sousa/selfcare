@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
 from django.http import HttpResponse
 
@@ -11,4 +12,20 @@ def login(request):
 
 
 def register(request):
-    return render(request=request, template_name='ecommerce/register.html')
+
+    if request.method == 'POST':
+        userName = request.POST['username']
+        email    = request.POST['email']
+        password = request.POST['password']
+
+        user = User.objects.create_user(userName, email, password)
+        user.save()
+
+        return render(
+            request=request, 
+            template_name='ecommerce/register-success.html', 
+            context={ 'username' : userName })
+
+    else:
+        return render(request=request, template_name='ecommerce/register.html')
+    
