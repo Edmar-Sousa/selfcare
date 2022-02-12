@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ecommerce'
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,10 @@ STATICFILES_DIRS = [
     os.path.join(os.path.dirname(__file__), '..', 'static'),
     os.path.join(os.path.dirname(__file__), '..', 'ecommerce', 'static')
 ]
+
+
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '..', 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

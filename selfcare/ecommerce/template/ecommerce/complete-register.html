@@ -1,0 +1,32 @@
+{% extends "selfcare/base.html" %}
+{% load static %}
+
+{% block title %}Complete registro{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/complete-register.css' %}">
+{% endblock styles %}
+
+{% block body %}
+    <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="file" name="imageuser" id="image-upload" accept="image/*">
+
+        <div class="form-field">
+            <h2>teste usuario</h2>
+        </div>
+
+        <div class="form-field">
+            <div class="image-upload">
+                <label for="image-upload">
+                    <div class="image-preview"></div>
+    
+                    <div class="dash">
+                        <p>Selecionar uma imagem de perfil</p>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </form>
+{% endblock body %}

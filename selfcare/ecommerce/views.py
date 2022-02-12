@@ -29,3 +29,10 @@ def register(request):
     else:
         return render(request=request, template_name='ecommerce/register.html')
     
+
+def profile(request, username):
+    return render(request=request, template_name='ecommerce/user-details.html')
+
+
+def finish(request):
+    return render(request, template_name='ecommerce/complete-register.html')
