@@ -47,21 +47,3 @@ div.page-container a.register-link {
     font-weight: 700;
     color: #161616;
 }
-
-div.page-container button.button-login {
-    width: 200px;
-    height: 30px;
-    font-weight: 700;
-    margin-top: 20px;
-    border: none;
-    border-radius: 3px;
-
-    cursor: pointer;
-
-    background: #5CA720;
-    color: #fff;
-}
-
-div.page-container button.button-login:hover {
-    transform: scale(0.98);
-}
