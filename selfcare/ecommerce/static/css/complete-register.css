@@ -5,6 +5,10 @@ form {
     padding: 20px 10px;
 }
 
+p input#id_imageuser, p label[for="id_imageuser"] {
+    display: none;
+}
+
 div.form-field {
     width: 100%;
     margin: 20px 0;

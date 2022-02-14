@@ -12,4 +12,4 @@ urlpatterns = [
 
     re_path(r'^profile/(?P<username>\w+)$', views.profile, name='profile'),
     re_path(r'^finish/$', views.finish, name='finish')
- ]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

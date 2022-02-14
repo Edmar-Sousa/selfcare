@@ -1,37 +1,73 @@
 {% extends "selfcare/base.html" %}
 {% load static %}
 
-{% block title %}Register{% endblock title %}
+{% block title %}Complete registro{% endblock title %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/complete-register.css' %}">
 {% endblock styles %}
 
 {% block body %}
-    <form action="{% url 'register' %}" method="POST">
+    <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <h1 class="logo-name">
-            <i class="fas fa-star"></i> selfcare - Register
-        </h1>
+        <div class="form-field">
+            <div class="image-upload">
+                <label for="id_imageuser">
+                    <div class="image-preview hidden">
+                        <img src="" id="img">
+                    </div>
+    
+                    <div class="dash">
+                        <p>Selecionar uma imagem de perfil</p>
+                    </div>
+                </label>
+            </div>
+        </div>
 
-        <fieldset>
-            <p><i class="fas fa-user"></i>Nome:</p>
-            <input type="text" placeholder="Digite seu nome" name="username">
+        {{ form.as_p }}
 
-            <p><i class="fas fa-envelope"></i>Email:</p>
-            <input type="email" placeholder="Digite seu email" name="email">
-
-            <p><i class="fas fa-key"></i>Password:</p>
-            <input type="password" placeholder="Digite sua senha" name="password">
-
+        <div class="form-field">
             <p>
                 Já tem uma conta? Faça <a href="{% url 'login' %}" class="register-link">Login</a>
             </p>
+        </div>
 
+        <div class="form-field">
             <button type="submit" class="button-login">
                 <i class="fas fa-user-plus"></i> Register
             </button>
-        </fieldset>
+        </div>
+
     </form>
+
+    <script>
+
+        const inputfile  = document.querySelector('input#id_imageuser')
+        const imgElement = document.querySelector('img#img')
+
+
+        const divImagePreview = document.querySelector('div.image-preview')
+        const divDashElement  = document.querySelector('div.dash')
+
+        const imageUpload = document.querySelector('div.image-upload')
+
+        function addClassUplodedInImageUpload() {
+            imageUpload.classList.add('uploded')
+        }
+
+        function showAndHiddenElements() {
+            divImagePreview.classList.remove('hidden')
+            divDashElement.classList.add('hidden')
+        }
+
+        inputfile.addEventListener('change', function () {
+            const [file] = inputfile.files
+
+            imgElement.src = URL.createObjectURL(file)
+            showAndHiddenElements()
+            addClassUplodedInImageUpload()
+        })
+
+    </script>
 {% endblock body %}

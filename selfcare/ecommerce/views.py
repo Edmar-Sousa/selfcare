@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 
 from django.http import HttpResponse
 
+from .form   import RegisterUser
+from .models import UserModel, LocalizationOfUser
+
+from .functions.user import registerLocalizationInModel, registerUserInModel, registerUserInUserDjangoModel
+
 def index(request):
     return render(request=request, template_name='ecommerce/index.html')
 
@@ -12,22 +17,21 @@ def login(request):
 
 
 def register(request):
-
     if request.method == 'POST':
-        userName = request.POST['username']
-        email    = request.POST['email']
-        password = request.POST['password']
+        form = RegisterUser(request.POST, request.FILES)
 
-        user = User.objects.create_user(userName, email, password)
-        user.save()
+        if form.is_valid():
+            userToRegistrad  = registerUserInUserDjangoModel(form)
+            localizationUser = registerLocalizationInModel(form)
+            registerUserInModel(form, userToRegistrad, localizationUser)
 
-        return render(
-            request=request, 
-            template_name='ecommerce/register-success.html', 
-            context={ 'username' : userName })
+            return render(
+                request=request, 
+                template_name='ecommerce/register-success.html')
 
     else:
-        return render(request=request, template_name='ecommerce/register.html')
+        form = RegisterUser()
+        return render(request=request, template_name='ecommerce/register.html',  context={ 'form' : form })
     
 
 def profile(request, username):
