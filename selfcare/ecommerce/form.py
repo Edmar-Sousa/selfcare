@@ -15,3 +15,8 @@ class RegisterUser(forms.Form):
     state     = forms.CharField(max_length=255)
 
     # description = forms.Textarea()
+
+
+class FormLogin(forms.Form):
+    email = forms.EmailField(max_length=255)
+    password = forms.CharField()
