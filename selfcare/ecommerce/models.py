@@ -19,4 +19,9 @@ class UserModel(models.Model):
 
 
 class ProductModel(models.Model):
-    pass
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    productImage = models.FileField(upload_to='upload')
+    title = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    price = models.FloatField()

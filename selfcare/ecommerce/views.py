@@ -3,10 +3,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout as auth_logout, authenticate
 from django.contrib.auth.decorators import login_required
 
-from .form   import RegisterUser, FormLogin
+from .form   import RegisterUser, FormLogin, FormProduct
 from .functions import auth
 
-from .models import UserModel, LocalizationOfUser
+from .models import UserModel, LocalizationOfUser, ProductModel
+
+from django.http import HttpResponse
 
 
 def index(request):
@@ -42,3 +44,33 @@ def profile(request, username):
     userDetails = UserModel.objects.filter(user__username=username).select_related('localization')
     return render(request=request, template_name='ecommerce/user-details.html', context={ 'userDetails' : userDetails[0] })
 
+
+@login_required
+def addProduct(request):
+    if request.method == 'POST':
+        form = FormProduct(request.POST, request.FILES)
+
+        if form.is_valid():
+            productimage = form.cleaned_data['productimage']
+            description  = form.cleaned_data['description']
+
+            title = form.cleaned_data['title']
+            price = form.cleaned_data['price']
+
+            userLoggedIn = request.user
+
+            productSaveInModel = ProductModel(
+                user=userLoggedIn, 
+                productImage=productimage, 
+                description=description, 
+                title=title, 
+                price=price
+            )
+            productSaveInModel.save()
+
+            form = FormProduct()
+            return render(request=request, template_name='ecommerce/add-product.html', context={ 'form' : form, 'success' : True })
+
+    else:
+        form = FormProduct()
+        return render(request=request, template_name='ecommerce/add-product.html', context={ 'form' : form })

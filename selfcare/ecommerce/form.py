@@ -22,3 +22,8 @@ class FormLogin(forms.Form):
     password = forms.CharField()
 
 
+class FormProduct(forms.Form):
+    productimage = forms.ImageField()
+    description  = forms.CharField(max_length=255, widget=forms.Textarea)
+    title        = forms.CharField(max_length=255)
+    price        = forms.FloatField()

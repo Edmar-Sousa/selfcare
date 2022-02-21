@@ -119,3 +119,13 @@ div.align-button button.cadastrar {
 div.align-button button.cadastrar:hover {
     transform: scale(0.98);
 }
+
+div.success-msg {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #366213;
+    border-radius: 3px;
+    background: #70cf24;
+}

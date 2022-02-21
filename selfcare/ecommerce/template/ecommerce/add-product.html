@@ -1,79 +1,71 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>selfcare - Cadastrar produto</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+{% extends "selfcare/home.html" %}
+{% load static %}
 
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/add-product.css">
-</head>
-<body>
-    <div class="page-container">
-        <header class="header">
-            <nav class="navigation-header">
-                <h1 class="logo-name">
-                    <i class="fas fa-star"></i> selfcare
-                </h1>
+{% block title %}Home{% endblock title %}
 
-                <ul class="ul-navigation">
-                    <li><i class="fas fa-search"></i></li>
-                    <li><i class="fas fa-user"></i></li>
-                    <li><i class="fas fa-shopping-cart"></i></li>
-                </ul>
-            </nav>
-        </header>
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/add-product.css' %}">
+{% endblock styles %}
 
-        <main>
+{% block body %}
+    <main>
+        <form action="{% url 'add-product' %}" method="POST" enctype="multipart/form-data">
+            {% if success %}
+                <div class="success-msg">
+                    <h2>Produto registrado com sucesso!</h2>
+                </div>
+            {% endif %}
             
-            <form action="#" method="POST" enctype="multipart/form-data">
-                <input type="file" id="file-upload" accept="image/*" style="display: none;">
-                <div class="form-container">
-    
-                    <label for="file-upload">
-                        <div class="img-preview">
-                            <img id="image-preview">
-                            <div class="dashad">
-                                <p>
-                                    <i class="fas fa-file-upload size"></i> <br>
-                                    Imagem do produto
-                                </p>
-                            </div>
-                        </div>
-                    </label>
-                    
-                    <div class="group">
-                        <div class="group__item">
-                            <label>Nome do produto</label>
-                            <input type="text" required>
-                        </div>
+            {% csrf_token %}
 
-                        <div class="group__item">
-                            <label>Preço do produto</label>
-                            <input type="text" required>
+            <div style="display: none;">
+                {{ form.productimage }}
+            </div>
+
+            <div class="form-container">
+
+                <label for="id_productimage">
+                    <div class="img-preview">
+                        <img id="image-preview">
+                        <div class="dashad">
+                            <p>
+                                <i class="fas fa-file-upload size"></i> <br>
+                                Imagem do produto
+                            </p>
                         </div>
                     </div>
-
-                    <div class="group">
-                        <div class="group__item">
-                            <label>Descrição</label>
-                            <textarea></textarea>
-                        </div>
+                </label>
+                
+                <div class="group">
+                    <div class="group__item">
+                        <label>Nome do produto</label>
+                        {{ form.title }}
                     </div>
 
-                    <div class="align-button">
-                        <button type="submit" class="cadastrar">Cadastrar produto</button>
+                    <div class="group__item">
+                        <label>Preço do produto</label>
+                        {{ form.price }}
                     </div>
                 </div>
-            </form>
-        </main>        
-    </div>
-    
+
+                <div class="group">
+                    <div class="group__item">
+                        <label>Descrição</label>
+                        {{ form.description }}
+                    </div>
+                </div>
+
+                <div class="align-button">
+                    <button type="submit" class="cadastrar">Cadastrar produto</button>
+                </div>
+            </div>
+        </form>
+    </main> 
+
     <script>
 
-        const imageInputFile = document.getElementById('file-upload')
+        const imageInputFile = document.getElementById('id_productimage')
         const imagePreview   = document.getElementById('image-preview')
 
 
@@ -86,5 +78,4 @@
 
     </script>
 
-</body>
-</html>
+{% endblock body %}

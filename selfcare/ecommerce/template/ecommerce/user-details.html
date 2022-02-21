@@ -12,7 +12,8 @@
 {% block body %}
 <main class="user-area">
     <div class="user-area-header">
-        <img src="https://avatars.githubusercontent.com/u/61367147?v=4" class="user-image">
+        
+        <img src="/{{ userDetails.userImage }}" class="user-image">
         
         <div class="user-details-header">
             <h3>{{ user.username }}</h3>
@@ -63,7 +64,7 @@
         <div class="comment-area__header">
             <h2>Produtos</h2>
 
-            <a href="#">
+            <a href="{% url 'add-product' %}">
                 <i class="far fa-plus-square"></i>
                 Adicionar produto
             </a>

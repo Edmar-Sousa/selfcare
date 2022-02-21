@@ -50,3 +50,8 @@ header.header ul.ul-navigation li {
 
     color: #5CA720;
 }
+
+header.header a {
+    text-decoration: none;
+    color: #5CA720
+}

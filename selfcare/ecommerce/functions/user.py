@@ -3,10 +3,6 @@ from ecommerce.models import UserModel, LocalizationOfUser
 
 
 def registerUserInUserDjangoModel(form):
-    """ 
-        this function register the user in Django 
-        User Model
-    """
     nameUserToRegister  = form.cleaned_data['username']
     emailUserToRegister = form.cleaned_data['email']
     passwordUserToRegister = form.cleaned_data['password']
