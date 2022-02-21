@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
-from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import logout as auth_logout, authenticate
 from django.contrib.auth.decorators import login_required
-
 
 from .form   import RegisterUser, FormLogin
 from .functions import auth
+
+from .models import UserModel, LocalizationOfUser
+
 
 def index(request):
     return render(request=request, template_name='ecommerce/index.html')
@@ -13,7 +15,7 @@ def index(request):
 
 def login(request):
     if request.method == 'POST':
-        auth.validateFormLoginAndLoginUser(request)
+        return auth.validateFormLoginAndLoginUser(request)
 
     else:
         form = FormLogin()
@@ -22,7 +24,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    return redirect('register')
+    return redirect('index')
 
 
 def register(request):
@@ -37,5 +39,6 @@ def register(request):
 
 @login_required
 def profile(request, username):
-    return render(request=request, template_name='ecommerce/user-details.html')
+    userDetails = UserModel.objects.filter(user__username=username).select_related('localization')
+    return render(request=request, template_name='ecommerce/user-details.html', context={ 'userDetails' : userDetails[0] })
 

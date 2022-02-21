@@ -9,16 +9,20 @@ def validateFormLoginAndLoginUser(request):
     form = FormLogin(request.POST)
 
     if form.is_valid():
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
 
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
             auth_login(request, user)
+            return redirect('profile', username)
 
         else:
-            redirect('login')
+            return redirect('login')
+
+    else:
+        return redirect('login')
 
 
 def validateFormRegisterAndRegisterUser(request):

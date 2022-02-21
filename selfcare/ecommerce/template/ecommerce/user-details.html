@@ -15,8 +15,8 @@
         <img src="https://avatars.githubusercontent.com/u/61367147?v=4" class="user-image">
         
         <div class="user-details-header">
-            <h3>User Name</h3>
-            <p>Status: <b class="bold-green">Vendedor</b></p>
+            <h3>{{ user.username }}</h3>
+            <p>Status: <b class="bold-green">{{ userDetails.status }}</b></p>
         </div>
     </div>
 
@@ -31,17 +31,17 @@
                 <tbody>
                     <tr>
                         <th class="bold-green">Rua:</th>
-                        <td>Rua tal</td>
+                        <td>{{ userDetails.localization.street }}</td>
                     </tr>
 
                     <tr>
                         <th class="bold-green">Cidade:</th>
-                        <td>Cidade tal</td>
+                        <td>{{ userDetails.localization.city }}</td>
                     </tr>
 
                     <tr>
                         <th class="bold-green">Estado:</th>
-                        <td>CE</td>
+                        <td>{{ userDetails.localization.state }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -55,11 +55,7 @@
         </h3>
 
         <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-            Accusantium optio architecto provident voluptas, 
-            mollitia tempora. Itaque quibusdam harum corrupti 
-            porro sit, aut magni at quas quidem, excepturi, 
-            et quae provident.
+            {{ userDetails.description }}
         </p>
     </div>
 

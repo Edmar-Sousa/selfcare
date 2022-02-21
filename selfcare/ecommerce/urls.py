@@ -8,6 +8,7 @@ from . import views
 urlpatterns = [
     re_path(r'^$', views.index, name='index'),
     re_path(r'^accounts/login/$', views.login, name='login'),
+    re_path(r'^accounts/logout$', views.logout, name='logout'),
     re_path(r'^register/$', views.register, name='register'),
 
     re_path(r'^profile/(?P<username>\w+)$', views.profile, name='profile'),

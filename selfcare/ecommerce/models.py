@@ -16,3 +16,7 @@ class UserModel(models.Model):
     localization = models.ForeignKey(LocalizationOfUser, on_delete=models.CASCADE)
 
     description = models.CharField(max_length=255)
+
+
+class ProductModel(models.Model):
+    pass
