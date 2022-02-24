@@ -71,59 +71,24 @@
         </div>
 
         <div class="comment-container">
-            <div class="comment">
-                <a href="#" class="edit-button">
-                    <i class="fas fa-edit"></i>
-                </a>
 
-                <div class="comment-header">
-                    <img src="https://avatars.githubusercontent.com/u/61367147?v=4">
-                    <div>
-                        <h3>Nome do Produto</h3>
-                        <h4>R$ <span class="green">50,00</span></h4>
+            {% for product in products %}
+                <div class="comment">
+                    <div class="comment-header">
+                        <img src="/{{ product.productImage }}" class="img-produto">
+                        <div>
+                            <h3>{{ product.title }}</h3>
+                            <h4>R$ <span class="green">{{ product.price }}</span></h4>
+                        </div>
                     </div>
+
+                    <a href="#" class="button-details">
+                        Detalhes do Produto
+                    </a>
                 </div>
+            {% endfor %}
 
-                <a href="#" class="button-details">
-                    Detalhes do Produto
-                </a>
-            </div>
-
-            <div class="comment">
-                <a href="#" class="edit-button">
-                    <i class="fas fa-edit"></i>
-                </a>
-
-                <div class="comment-header">
-                    <img src="https://avatars.githubusercontent.com/u/61367147?v=4">
-                    <div>
-                        <h3>Nome do Produto</h3>
-                        <h4>R$ <span class="green">50,00</span></h4>
-                    </div>
-                </div>
-
-                <a href="#" class="button-details">
-                    Detalhes do Produto
-                </a>
-            </div>
-
-            <div class="comment">
-                <a href="#" class="edit-button">
-                    <i class="fas fa-edit"></i>
-                </a>
-
-                <div class="comment-header">
-                    <img src="https://avatars.githubusercontent.com/u/61367147?v=4">
-                    <div>
-                        <h3>Nome do Produto</h3>
-                        <h4>R$ <span class="green">50,00</span></h4>
-                    </div>
-                </div>
-
-                <a href="#" class="button-details">
-                    Detalhes do Produto
-                </a>
-            </div>
+            
         </div>
     </section>
 </main>

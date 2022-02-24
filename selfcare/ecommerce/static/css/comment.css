@@ -42,6 +42,7 @@ div.comment-header {
 
 div.comment-header img {
     width: 70px;
+    height: 70px;
     border-radius: 35px;
     margin-right: 20px;
 }

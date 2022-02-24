@@ -1,120 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>selfcare</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+{% extends "selfcare/home.html" %}
+{% load static %}
 
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/product.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/search-product.css">
-</head>
-<body>
-    
-    <div class="page-container">
-        <header class="header">
-            <nav class="navigation-header">
-                <h1 class="logo-name">
-                    <i class="fas fa-star"></i> selfcare
-                </h1>
+{% block title %}Search Product{% endblock title %}
 
-                <ul class="ul-navigation">
-                    <li><i class="fas fa-search"></i></li>
-                    <li><i class="fas fa-user"></i></li>
-                    <li><i class="fas fa-shopping-cart"></i></li>
-                </ul>
-            </nav>
-        </header>
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+<link rel="stylesheet" href="{% static 'css/search-product.css' %}">
+{% endblock styles %}
 
-        <main class="search-area">
-            <div class="search-field-container">
-                <form action="#" method="GET">
-                    <input type="text" class="search-input" placeholder="Pesquisar produto">
-                    <button type="submit" class="button-search">
-                        <i class="fas fa-search"></i>
-                        Procurar
-                    </button>
-                </form>
-            </div>
-
-            <div class="products-list">
-                <div class="product-item">
-                    <img src="./assets/img1.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-
-                <div class="product-item">
-                    <img src="./assets/img2.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-
-                <div class="product-item">
-                    <img src="./assets/img3.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-
-                <div class="product-item">
-                    <img src="./assets/img4.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-
-                <div class="product-item">
-                    <img src="./assets/img5.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-
-                <div class="product-item">
-                    <img src="./assets/img6.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-
-                <div class="product-item">
-                    <img src="./assets/img7.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-
-                <div class="product-item">
-                    <img src="./assets/img8.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-
-                <div class="product-item">
-                    <img src="./assets/img9.jpg" alt="img produto 1" class="img-product">
-                    <p class="product-name">Lorem ipsum dolor sit</p>
-                    <h3>R$ <span class="text-green">50,00</span></h3>
-                </div>
-            </div>
-
-            <div class="contact">
-                <ul>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="#">Termos de servço</a></li>
-                    <li><a href="#">Política de privacidade</a></li>
-                    <li><a href="#">Cancelamento, troca ou reembolso</a></li>
-                </ul>
-
-                <div class="send-me">
-                    <p>newsletter</p>
-                    <div class="align-button">
-                        <input type="text" placeholder="Digite seu melhor email" id="email-field">
-                        <input type="submit" value="inscrever" id="button-submit">
-                    </div>
-                </div>
-            </div>
-        </main>
+{% block body %}
+<main class="search-area">
+    <div class="search-field-container">
+        <form action="{% url 'search-product' %}" method="GET">
+            <input type="text" name="search" class="search-input" placeholder="Pesquisar produto">
+            <button type="submit" class="button-search">
+                <i class="fas fa-search"></i>
+                Procurar
+            </button>
+        </form>
     </div>
 
-</body>
-</html>
+    <div class="products-list">
+        {% if products == None %}
+            <h3>Insira um valor no campo acima, para pesquisar algum produto!</h3>
+        {% else %}
+
+            {% for product in products %}    
+                <div class="product-item">
+                    <img src="/{{ product.productImage }}" alt="img produto 1" class="img-product">
+                    <p class="product-name">{{ product.title }}</p>
+                    <h3>R$ <span class="text-green">{{product.price  }}</span></h3>
+                </div>
+            {% endfor %}
+
+        {% endif %}
+
+
+    </div>
+</main>
+{% endblock body %}

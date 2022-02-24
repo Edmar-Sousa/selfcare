@@ -16,6 +16,7 @@ main.user-area div.user-area-header {
 
 main.user-area img.user-image {
     width: 200px;
+    height: 200px;
     border-radius: 50%;
 }
 
@@ -56,40 +57,6 @@ div.decription-area p {
     margin-top: 20px;
     padding: 0 10px;
     text-align: justify;
-}
-
-section.comment-area {
-    padding: 20px 0;
-}
-
-section.comment-area div.comment-area__header {
-    padding-right: 10px;
-}
-
-div.comment {
-    position: relative;
-}
-
-div.comment a.edit-button {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-
-    padding: 4px;
-    border-radius: 3px;
-    color: #161616;
-}
-
-div.comment a.edit-button:hover {
-    color: #5CA720;
-}
-
-div.comment h4 {
-    margin-top: 10px;
-}
-
-div.comment span.green {
-    color: #5CA720;
 }
 
 div.comment a.button-details {

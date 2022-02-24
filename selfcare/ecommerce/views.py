@@ -39,10 +39,27 @@ def register(request):
         return render(request=request, template_name='ecommerce/register.html',  context={ 'form' : form })
 
 
+def search(request):
+    try:
+        searchValue = request.GET['search']
+        products = ProductModel.objects.filter(title__contains=searchValue)
+    
+    except:
+        products = None
+
+    return render(request=request, template_name='ecommerce/search-product.html', context={ 'products' : products })
+
+
 @login_required
 def profile(request, username):
     userDetails = UserModel.objects.filter(user__username=username).select_related('localization')
-    return render(request=request, template_name='ecommerce/user-details.html', context={ 'userDetails' : userDetails[0] })
+    productsUser = ProductModel.objects.filter(user=request.user)
+
+    return render(
+        request=request, 
+        template_name='ecommerce/user-details.html', 
+        context={ 'userDetails' : userDetails[0], 'products' : productsUser }
+    )
 
 
 @login_required

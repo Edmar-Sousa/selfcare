@@ -29,6 +29,10 @@ input.search-input {
     padding: 0 10px;
 }
 
+img.img-product {
+    max-width: 200px;
+}
+
 button.button-search {
     padding: 10px 20px;
     border: none;
