@@ -4,15 +4,14 @@ from django.contrib.auth import logout as auth_logout, authenticate
 from django.contrib.auth.decorators import login_required
 
 from .form   import RegisterUser, FormLogin, FormProduct
-from .functions import auth
+from .functions import auth, product
 
 from .models import UserModel, LocalizationOfUser, ProductModel
 
-from django.http import HttpResponse
-
 
 def index(request):
-    return render(request=request, template_name='ecommerce/index.html')
+    products = ProductModel.objects.all()[:6]
+    return render(request=request, template_name='ecommerce/index.html', context={ 'products' : products })
 
 
 def login(request):
@@ -50,6 +49,11 @@ def search(request):
     return render(request=request, template_name='ecommerce/search-product.html', context={ 'products' : products })
 
 
+def productDetails(request, productId):
+    product = ProductModel.objects.filter(id=productId)[0]
+    return render(request=request, template_name='ecommerce/details.html', context={ 'product' : product })
+
+
 @login_required
 def profile(request, username):
     userDetails = UserModel.objects.filter(user__username=username).select_related('localization')
@@ -58,35 +62,24 @@ def profile(request, username):
     return render(
         request=request, 
         template_name='ecommerce/user-details.html', 
-        context={ 'userDetails' : userDetails[0], 'products' : productsUser }
-    )
+        context={ 'userDetails' : userDetails[0], 'products' : productsUser })
 
 
 @login_required
 def addProduct(request):
     if request.method == 'POST':
-        form = FormProduct(request.POST, request.FILES)
+        response = product.addProductInDatabase(request)
+        context = { }
 
-        if form.is_valid():
-            productimage = form.cleaned_data['productimage']
-            description  = form.cleaned_data['description']
-
-            title = form.cleaned_data['title']
-            price = form.cleaned_data['price']
-
-            userLoggedIn = request.user
-
-            productSaveInModel = ProductModel(
-                user=userLoggedIn, 
-                productImage=productimage, 
-                description=description, 
-                title=title, 
-                price=price
-            )
-            productSaveInModel.save()
-
+        if (response['is_valid']):
             form = FormProduct()
-            return render(request=request, template_name='ecommerce/add-product.html', context={ 'form' : form, 'success' : True })
+
+        else:
+            form = response['form_data']
+
+        context['form'] = form
+        context['msg']  = response['msg']
+        return render(request=request, template_name='ecommerce/add-product.html', context=context)
 
     else:
         form = FormProduct()

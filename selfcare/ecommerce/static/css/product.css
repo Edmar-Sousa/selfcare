@@ -10,7 +10,8 @@ div.products-list {
 }
 
 img.img-product {
-    width: 100%;
+    width: 70%;
+    clip-path: polygon(100% 17%, 100% 77%, 0 77%, 0 17%);
 }
 
 div.product-item p.product-name {

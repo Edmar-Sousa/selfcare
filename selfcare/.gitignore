@@ -3,5 +3,4 @@
 __pycache__
 *.pyc
 migrations
-uploads/upload/*.png
-uploads/upload/*.jpeg
+uploads/upload

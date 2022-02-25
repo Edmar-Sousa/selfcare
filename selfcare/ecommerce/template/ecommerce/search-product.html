@@ -30,6 +30,8 @@
                     <img src="/{{ product.productImage }}" alt="img produto 1" class="img-product">
                     <p class="product-name">{{ product.title }}</p>
                     <h3>R$ <span class="text-green">{{product.price  }}</span></h3>
+
+                    <a href="{% url 'product-detail' product.id %}" class="view-btn">Detalhes</a>
                 </div>
             {% endfor %}
 

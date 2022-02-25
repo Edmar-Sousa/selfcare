@@ -96,4 +96,8 @@ textarea.comment-body {
     section.product-view {
         display: flex;
     }
+
+    div.product-image img {
+        max-height: 500px;
+    }
 }

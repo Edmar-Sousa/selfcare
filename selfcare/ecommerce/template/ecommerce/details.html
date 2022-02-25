@@ -1,176 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>selfcare - Details</title>
+{% extends "selfcare/home.html" %}
+{% load static %}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+{% block title %}Detalhes{% endblock title %}
 
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/comment.css">
-    <link rel="stylesheet" href="css/details.css">
-</head>
-<body>
-    
-    <div class="page-container">
-        <header class="header">
-            <nav class="navigation-header">
-                <h1 class="logo-name">
-                    <i class="fas fa-star"></i> selfcare
-                </h1>
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock styles %}
 
-                <ul class="ul-navigation">
-                    <li><i class="fas fa-search"></i></li>
-                    <li><i class="fas fa-user"></i></li>
-                    <li><i class="fas fa-shopping-cart"></i></li>
-                </ul>
-            </nav>
-        </header>
+{% block body %}
+    <section class="product-view">
+        <div class="product-image">
+            <img src="/{{ product.productImage }}" class="product">
+        </div>
 
-        <section class="product-view">
-            <div class="product-image">
-                <img src="assets/img1.jpg">
-            </div>
+        <div class="product-details">
+            <h2>{{ product.title }}</h2>
+            <p>
+                {{ product.description }}
+            </p>
 
-            <div class="product-details">
-                <h2>Lorem ipsum dolor sit amet consectetur</h2>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    A dolor cum officia quae tempora fugiat dolores illum error. 
-                    Perferendis, amet nemo? Sapiente libero dicta animi ex molestiae 
-                    voluptate voluptatem dolorum.
-                </p>
+            <h3>
+                R$ <span class="green-text">{{ product.price }}</span>
+            </h3>
 
-                <h3>
-                    R$ <span class="green-text">50,00</span>
-                </h3>
-
-                <button class="button-add-shopping-cart">
-                    <i class="fas fa-shopping-cart"></i> Comprar
-                </button>
-            </div>
-        </section>
-
-        <section class="comment-area">
-            <div class="comment-area__header">
-                <h2>Comentarios</h2>
-
-                <a href="#" id="add-comment">
-                    <i class="far fa-plus-square"></i>
-                    Adicionar comentario
-                </a>
-            </div>
-
-            <div class="comment-container">
-                <div class="comment" id="form-add-comment">
-                    <div class="comment-header">
-                        <img src="https://avatars.githubusercontent.com/u/61367147?v=4">
-                        <h3>User Name</h3>
-                    </div>
-
-                    <form action="#" method="POST">
-                        <textarea name="comment-body" class="comment-body">Seu comentario</textarea>
-                    </form>
-                </div>
-
-                <div class="comment">
-                    <div class="comment-header">
-                        <img src="https://avatars.githubusercontent.com/u/61367147?v=4">
-                        <h3>User Name</h3>
-                    </div>
-    
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Temporibus eum fuga aliquid. Laboriosam, exercitationem 
-                        at reiciendis sit, est, expedita dolorem necessitatibus 
-                        cupiditate libero commodi reprehenderit? Perferendis 
-                        voluptatem itaque soluta necessitatibus!
-                    </p>
-                </div>
-    
-                <div class="comment">
-                    <div class="comment-header">
-                        <img src="https://avatars.githubusercontent.com/u/61367147?v=4">
-                        <h3>User Name</h3>
-                    </div>
-    
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Temporibus eum fuga aliquid. Laboriosam, exercitationem 
-                        at reiciendis sit, est, expedita dolorem necessitatibus 
-                        cupiditate libero commodi reprehenderit? Perferendis 
-                        voluptatem itaque soluta necessitatibus!
-                    </p>
-                </div>
-    
-                <div class="comment">
-                    <div class="comment-header">
-                        <img src="https://avatars.githubusercontent.com/u/61367147?v=4">
-                        <h3>User Name</h3>
-                    </div>
-    
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Temporibus eum fuga aliquid. Laboriosam, exercitationem 
-                        at reiciendis sit, est, expedita dolorem necessitatibus 
-                        cupiditate libero commodi reprehenderit? Perferendis 
-                        voluptatem itaque soluta necessitatibus!
-                    </p>
-                </div>
-    
-                <div class="comment">
-                    <div class="comment-header">
-                        <img src="https://avatars.githubusercontent.com/u/61367147?v=4">
-                        <h3>User Name</h3>
-                    </div>
-    
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Temporibus eum fuga aliquid. Laboriosam, exercitationem 
-                        at reiciendis sit, est, expedita dolorem necessitatibus 
-                        cupiditate libero commodi reprehenderit? Perferendis 
-                        voluptatem itaque soluta necessitatibus!
-                    </p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <script>
-        const buttonAddCommentElement = document.querySelector('a#add-comment')
-        const addCommentFormElement   = document.querySelector('div#form-add-comment')
-        let isEdit = false
-
-
-        function addAndRemoveClass(classAdd, classRemove) {
-            addCommentFormElement.classList.remove(classRemove)
-            addCommentFormElement.classList.add(classAdd)
-        }
-
-
-        function addClassAndShowDiv() {
-            addAndRemoveClass('fade-out', 'fade-in')
-        }
-
-        function removeClassAndHiddenDiv() {
-            addCommentFormElement.style.display = 'block'
-            addAndRemoveClass('fade-in', 'fade-out')
-        }
-
-        buttonAddCommentElement.addEventListener('click', (event) => {
-            event.preventDefault()
-
-            isEdit ? addClassAndShowDiv() : removeClassAndHiddenDiv()
-            isEdit = !isEdit
-        })
-
-
-        addCommentFormElement.addEventListener('animationend', (animation) => {
-            if (animation.animationName == 'fade-out')
-                addCommentFormElement.style.display = 'none'
-        })
-    </script>
-</body>
-</html>
+            <button class="button-add-shopping-cart">
+                <i class="fas fa-shopping-cart"></i> Comprar
+            </button>
+        </div>
+    </section>
+{% endblock body %}

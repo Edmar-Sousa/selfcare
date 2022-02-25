@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 div.page-container {
     width: 100vw;
 }
@@ -29,8 +33,14 @@ input.search-input {
     padding: 0 10px;
 }
 
+a.view-btn {
+    text-decoration: none;
+    color: #161616;
+}
+
 img.img-product {
     max-width: 200px;
+    clip-path: polygon(100% 17%, 100% 77%, 0 77%, 0 17%);
 }
 
 button.button-search {

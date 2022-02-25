@@ -11,9 +11,9 @@
 {% block body %}
     <main>
         <form action="{% url 'add-product' %}" method="POST" enctype="multipart/form-data">
-            {% if success %}
+            {% if msg %}
                 <div class="success-msg">
-                    <h2>Produto registrado com sucesso!</h2>
+                    <h2>{{ msg }}</h2>
                 </div>
             {% endif %}
             
