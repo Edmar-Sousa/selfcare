@@ -46,15 +46,15 @@ view, urls e entre outros.
   #    - Lib
   #    - Scripts
   
-  # crie um diretorio para o codigo
-  mkdir src
-  
   # clone o projeto dentro da pasta src
   git clone https://github.com/Edmar-Sousa/selfcare.git
+  cd selfcare
   cd selfcare
   
   # execute as migraçoes
   python manage.py makemigrations
+  python manage.py makemigrations  ecommerce
+  
   python manage.py migrate
   
   # execute o servidor
